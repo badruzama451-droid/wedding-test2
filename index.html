@@ -243,7 +243,7 @@
 
 
 <!-- =====================================================
-     OPENING
+     OPENING — sealed envelope
 ===================================================== -->
 
 <div id="opening">
@@ -274,31 +274,7 @@
     </div>
 
 
-    <!-- Mihrab arch -->
-
-    <div class="opening-arch">
-
-        <svg viewBox="0 -50 360 650" aria-hidden="true">
-
-            <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                <path class="draw" pathLength="1" d="M6 600V170C6 100 70 66 180 14C290 66 354 100 354 170V600Z"/>
-                <path class="draw" pathLength="1" stroke-opacity=".55" style="animation-delay:.6s" d="M18 600V172C18 108 76 78 180 30C284 78 342 108 342 172V600"/>
-                <path class="draw" pathLength="1" style="animation-delay:1.2s" d="M180 -22V14"/>
-            </g>
-
-            <use class="finial-moon" href="#crescent" x="158" y="-40" width="44" height="25.7"/>
-            <use class="finial-star" href="#khatam" x="171" y="-62" width="18" height="18"/>
-            <use class="arch-star" href="#khatam" x="164" y="58" width="32" height="32"/>
-
-        </svg>
-
-        <svg class="branch branch-left" aria-hidden="true"><use href="#branch"/></svg>
-        <svg class="branch branch-right" aria-hidden="true"><use href="#branch"/></svg>
-
-    </div>
-
-
-    <!-- Content -->
+    <!-- Title -->
 
     <div class="opening-content">
 
@@ -318,17 +294,84 @@
 
         <p class="opening-urdu" lang="ur" dir="rtl">دعوت نامہ</p>
 
-        <button id="openInvitation" type="button">
-            OPEN INVITATION
-            <b>→</b>
-        </button>
+    </div>
+
+
+    <!-- Envelope -->
+
+    <div class="envelope-scene">
+
+        <div class="envelope" id="envelope">
+
+            <div class="env-glow"></div>
+            <div class="env-shadow"></div>
+            <div class="env-back"></div>
+
+            <!-- The card inside the envelope -->
+
+            <div class="env-letter">
+                <div class="letter-inner">
+                    <svg class="letter-moon" aria-hidden="true"><use href="#crescent"/></svg>
+                    <p class="letter-ar" lang="ar" dir="rtl">وَلِيمَة</p>
+                    <svg class="divider small" aria-hidden="true"><use href="#divider"/></svg>
+                    <p class="letter-names">
+                        Mohammad Faiz
+                        <em>&amp;</em>
+                        Dilkashan Parveen
+                    </p>
+                </div>
+            </div>
+
+            <!-- Front pocket -->
+
+            <div class="env-pocket">
+                <svg viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true">
+                    <g fill="none" stroke="#dcc58f" stroke-width="1" stroke-opacity=".6" stroke-linejoin="round">
+                        <path d="M0 0L150 104L300 0"/>
+                        <path d="M0 200L150 104L300 200"/>
+                    </g>
+                    <use href="#crescent" x="132" y="150" width="36" height="21" color="#dcc58f" opacity=".7"/>
+                </svg>
+            </div>
+
+            <!-- Flap (opens on tap) -->
+
+            <div class="env-flap">
+
+                <svg class="flap-outer" viewBox="0 0 300 112" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="flapGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#2d6858"/>
+                            <stop offset="1" stop-color="#1d5143"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M0 0H300L150 112Z" fill="url(#flapGrad)" stroke="#dcc58f" stroke-opacity=".85" stroke-width="1.2" stroke-linejoin="round"/>
+                    <path d="M24 6L150 88L276 6" fill="none" stroke="#dcc58f" stroke-opacity=".28" stroke-width="1"/>
+                </svg>
+
+                <svg class="flap-lining" viewBox="0 0 300 112" aria-hidden="true">
+                    <path d="M0 0H300L150 112Z" fill="#f4ead4" stroke="#dcc58f" stroke-width="1.2" stroke-linejoin="round"/>
+                    <path d="M24 6L150 88L276 6" fill="none" stroke="#b8945a" stroke-opacity=".35" stroke-width="1"/>
+                    <use href="#khatam" x="132" y="22" width="36" height="36" color="#b8945a"/>
+                </svg>
+
+            </div>
+
+            <!-- Wax seal = open button -->
+
+            <button id="openInvitation" type="button" aria-label="Open the invitation">
+                <svg aria-hidden="true"><use href="#khatam"/></svg>
+            </button>
+
+        </div>
 
     </div>
 
 
-    <div id="transitionMoon" aria-hidden="true">
-        <svg viewBox="0 0 48 28"><use href="#crescent"/></svg>
-    </div>
+    <p class="open-hint">
+        <span lang="ur" dir="rtl">کھولنے کے لیے مہر پر ٹیپ کریں</span>
+        <small>Tap the seal to open</small>
+    </p>
 
 </div>
 
@@ -393,30 +436,17 @@
 
     <!-- Main arch frame -->
 
-    <div class="frame">
+    <div class="frame page-card">
+        <span class="card-glow" aria-hidden="true"></span>
+        <span class="card-badge" aria-hidden="true"><svg class="arch-star"><use href="#khatam"/></svg></span>
 
-        <div class="frame-crown">
 
-            <svg viewBox="0 -58 360 228" aria-hidden="true">
-
-                <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                    <path class="draw" pathLength="1" d="M6 170V118C6 70 70 52 180 12C290 52 354 70 354 118V170"/>
-                    <path class="draw d2" pathLength="1" stroke-opacity=".55" d="M16 170V120C16 78 76 60 180 24C284 60 344 78 344 120V170"/>
-                    <path class="draw d3" pathLength="1" d="M180 -17V12"/>
-                </g>
-
-                <use class="finial-moon" href="#crescent" x="160" y="-34" width="40" height="23.3"/>
-                <use class="finial-star" href="#khatam" x="172" y="-56" width="16" height="16"/>
-                <use class="arch-star" href="#khatam" x="166" y="46" width="28" height="28"/>
-
-            </svg>
-
-        </div>
+        
 
 
         <div class="frame-body">
 
-            <div class="frame-lines"></div>
+            
 
             <svg class="rosette" aria-hidden="true"><use href="#rosette"/></svg>
 
@@ -510,20 +540,7 @@
         </div>
 
 
-        <div class="frame-base">
-
-            <svg viewBox="0 0 360 44" aria-hidden="true">
-
-                <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
-                    <path class="draw" pathLength="1" d="M6 0V30H156M204 30H354V0"/>
-                    <path class="draw d2" pathLength="1" stroke-opacity=".55" d="M16 0V22H150M210 22H344V0"/>
-                </g>
-
-                <use class="arch-star" href="#khatam" x="166" y="16" width="28" height="28"/>
-
-            </svg>
-
-        </div>
+        
 
     </div>
 
@@ -557,7 +574,10 @@
     <div class="page-pattern"></div>
     <div class="dust" data-dust="12"></div>
 
-    <div class="shayari-card">
+    <div class="shayari-card page-card">
+        <span class="card-glow" aria-hidden="true"></span>
+        <span class="card-badge" aria-hidden="true"><svg class="arch-star"><use href="#khatam"/></svg></span>
+
 
         <p class="eyebrow-ur rise" lang="ur" dir="rtl">
             کلامِ دل
@@ -693,34 +713,21 @@
     <div class="dust" data-dust="12"></div>
 
 
-    <div class="lantern lantern-left small">
-        <i></i>
-        <svg viewBox="0 0 60 120" aria-hidden="true">
-            <circle class="fanous-halo" cx="30" cy="62" r="46" fill="url(#lampGlow)"/>
-            <ellipse class="fanous-flame" cx="30" cy="62" rx="9" ry="20" fill="url(#lampGlow)"/>
-            <use href="#fanous"/>
-        </svg>
-    </div>
+    
 
-    <div class="lantern lantern-right small">
-        <i></i>
-        <svg viewBox="0 0 60 120" aria-hidden="true">
-            <circle class="fanous-halo" cx="30" cy="62" r="46" fill="url(#lampGlow)"/>
-            <ellipse class="fanous-flame" cx="30" cy="62" rx="9" ry="20" fill="url(#lampGlow)"/>
-            <use href="#fanous"/>
-        </svg>
-    </div>
+    
 
 
-    <div class="frame venue-frame">
+    <div class="frame venue-frame page-card">
+        <span class="card-glow" aria-hidden="true"></span>
+        <span class="card-badge" aria-hidden="true"><svg class="arch-star"><use href="#khatam"/></svg></span>
 
-        <div class="frame-crown">
-            <svg viewBox="0 0 360 228" aria-hidden="true"><use href="#crown"/></svg>
-        </div>
+
+        
 
         <div class="frame-body">
 
-            <div class="frame-lines"></div>
+            
 
 
             <p class="eyebrow-ur rise" lang="ur" dir="rtl">
@@ -809,15 +816,7 @@
         </div>
 
 
-        <div class="frame-base">
-            <svg viewBox="0 0 360 44" aria-hidden="true">
-                <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
-                    <path d="M6 0V30H156M204 30H354V0"/>
-                    <path d="M16 0V22H150M210 22H344V0" stroke-opacity=".55"/>
-                </g>
-                <use class="arch-star" href="#khatam" x="166" y="16" width="28" height="28"/>
-            </svg>
-        </div>
+        
 
     </div>
 

@@ -80,10 +80,11 @@
 
 
     /* =====================================================
-       OPENING
+       OPENING — envelope
+       tap -> flap opens -> card rises -> card grows into page
     ===================================================== */
 
-    const openButton = $("#openInvitation");
+    const envelope = $("#envelope");
     const opening = $("#opening");
     const website = $("#website");
 
@@ -131,7 +132,7 @@
     }
 
 
-    openButton.addEventListener("click", () => {
+    function openEnvelope() {
 
         if (opening.classList.contains("transition")) return;
 
@@ -139,17 +140,26 @@
 
         if (themeMeta) themeMeta.setAttribute("content", "#fcf9f3");
 
+        // 1. seal fades, flap swings open, card slides up
         opening.classList.add("transition");
 
         const speed = reduceMotion ? 0.2 : 1;
 
+        // 2. card grows, envelope fades, golden flash
+        setTimeout(() => {
+
+            opening.classList.add("expand");
+
+        }, 2000 * speed);
+
+        // 3. page appears underneath
         setTimeout(() => {
 
             website.classList.add("show");
 
-        }, 650 * speed);
+        }, 2350 * speed);
 
-
+        // 4. opening screen leaves, page unlocks
         setTimeout(() => {
 
             opening.classList.add("hide");
@@ -160,9 +170,46 @@
 
             startReveals();
 
-        }, 1700 * speed);
+        }, 3100 * speed);
 
-    });
+    }
+
+    // The seal button sits inside the envelope, so one listener
+    // covers taps on the seal, the envelope, and the keyboard.
+    envelope.addEventListener("click", openEnvelope);
+
+
+    /* =====================================================
+       PAGE CARDS — run the outline light only while visible
+    ===================================================== */
+
+    const cards = $$(".page-card");
+
+    if ("IntersectionObserver" in window) {
+
+        const cardObserver = new IntersectionObserver(
+
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    entry.target.classList.toggle("in-view", entry.isIntersecting);
+
+                });
+
+            },
+
+            { threshold: 0 }
+
+        );
+
+        cards.forEach((card) => cardObserver.observe(card));
+
+    } else {
+
+        cards.forEach((card) => card.classList.add("in-view"));
+
+    }
 
 
     /* =====================================================

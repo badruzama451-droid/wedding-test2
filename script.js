@@ -16,6 +16,13 @@ openButton.addEventListener("click", () => {
 
     opening.classList.add("transition");
 
+    const themeMeta =
+        document.querySelector('meta[name="theme-color"]');
+
+    if (themeMeta) {
+        themeMeta.setAttribute("content", "#f4eee5");
+    }
+
     setTimeout(() => {
 
         website.classList.add("show");
@@ -198,11 +205,16 @@ reminderButton.addEventListener(
             "BEGIN:VEVENT",
             "UID:walima-faiz-dilkashan-2026@example.com",
             "DTSTAMP:20261003T070000Z",
-            "DTSTART:20261106T190000",
-            "DTEND:20261106T220000",
+            "DTSTART:20261106T133000Z",
+            "DTEND:20261106T163000Z",
             "SUMMARY:Walima — Mohammad Faiz & Dilkashan Parveen",
-            "LOCATION:City Marriage Hall, Urdu Bazar, Darbhanga, Bihar 846004",
-            "DESCRIPTION:Walima celebration of Mohammad Faiz and Dilkashan Parveen.",
+            "LOCATION:City Marriage Hall\\, Urdu Bazar\\, Darbhanga\\, Bihar 846004",
+            "DESCRIPTION:Walima celebration of Mohammad Faiz and Dilkashan Parveen. 7:00 PM IST.",
+            "BEGIN:VALARM",
+            "TRIGGER:-PT3H",
+            "ACTION:DISPLAY",
+            "DESCRIPTION:Walima tonight at 7:00 PM",
+            "END:VALARM",
             "END:VEVENT",
             "END:VCALENDAR"
         ].join("\r\n");

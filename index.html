@@ -6,23 +6,34 @@
     <meta charset="UTF-8">
 
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <meta name="theme-color" content="#0c2b25">
+    <meta name="theme-color" content="#fcf9f3">
 
     <meta name="description"
-          content="Walima invitation — Mohammad Faiz & Dilkashan Parveen, 6 November 2026, City Marriage Hall, Darbhanga.">
+          content="Walima invitation — Mohammad Faiz &amp; Dilkashan Parveen, 6 November 2026, City Marriage Hall, Darbhanga.">
 
     <title>
-        Walima Invitation — Mohammad Faiz & Dilkashan Parveen
+        Walima Invitation — Mohammad Faiz &amp; Dilkashan Parveen
     </title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&family=Noto+Nastaliq+Urdu:wght@400;500&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&family=Noto+Nastaliq+Urdu:wght@400;500&display=swap"
           rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
+    <noscript>
+        <style>
+            #opening { display: none; }
+            #website { opacity: 1; transform: none; }
+            .rise, .write { opacity: 1; clip-path: none; }
+            .draw { stroke-dashoffset: 0; }
+            .frame-lines { clip-path: none; }
+            body.locked { overflow: auto; height: auto; }
+        </style>
+    </noscript>
 
 </head>
 
@@ -31,50 +42,283 @@
 
 
 <!-- =====================================================
+     SVG SPRITE — shared Islamic graphics
+===================================================== -->
+
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+
+    <defs>
+
+        <radialGradient id="lampGlow">
+            <stop offset="0" stop-color="#ffe7a6" stop-opacity=".9"/>
+            <stop offset="1" stop-color="#ffe7a6" stop-opacity="0"/>
+        </radialGradient>
+
+    </defs>
+
+
+    <!-- Khatam: eight-pointed star (Rub el Hizb) -->
+
+    <symbol id="khatam" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round">
+            <rect x="15" y="15" width="70" height="70" vector-effect="non-scaling-stroke"/>
+            <rect x="15" y="15" width="70" height="70" transform="rotate(45 50 50)" vector-effect="non-scaling-stroke"/>
+            <circle cx="50" cy="50" r="16" vector-effect="non-scaling-stroke"/>
+            <rect x="41" y="41" width="18" height="18" transform="rotate(45 50 50)" vector-effect="non-scaling-stroke"/>
+        </g>
+    </symbol>
+
+
+    <!-- Crescent, bowl facing up -->
+
+    <symbol id="crescent" viewBox="6 26 48 28">
+        <path d="M10 30A20 20 0 0 0 50 30A26 26 0 0 1 10 30Z" fill="currentColor"/>
+    </symbol>
+
+
+    <!-- Fanous lantern -->
+
+    <symbol id="fanous" viewBox="0 0 60 120">
+        <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="30" cy="5" r="3.5"/>
+            <path d="M30 8.5V16"/>
+            <path d="M19 28C19 20 25 16 30 16C35 16 41 20 41 28Z"/>
+            <path d="M16 28H44"/>
+            <path d="M18 31C14 44 12 54 14 64C16 76 22 86 25 92H35C38 86 44 76 46 64C48 54 46 44 42 31Z"/>
+            <path d="M30 31V92"/>
+            <path d="M24 31C21 50 22 76 27 92"/>
+            <path d="M36 31C39 50 38 76 33 92"/>
+            <path d="M25 92L27 100H33L35 92"/>
+            <path d="M30 100V112"/>
+            <circle cx="30" cy="115" r="2.2"/>
+        </g>
+    </symbol>
+
+
+    <!-- Rosette medallion -->
+
+    <symbol id="rosette" viewBox="0 0 200 200">
+        <g fill="none" stroke="currentColor" stroke-width="1">
+            <circle cx="100" cy="100" r="97" vector-effect="non-scaling-stroke"/>
+            <circle cx="100" cy="100" r="91" stroke-dasharray="1 5" vector-effect="non-scaling-stroke"/>
+            <use href="#khatam" x="12" y="12" width="176" height="176"/>
+            <use href="#khatam" x="12" y="12" width="176" height="176" transform="rotate(22.5 100 100)"/>
+            <circle cx="100" cy="100" r="46" vector-effect="non-scaling-stroke"/>
+            <circle cx="100" cy="100" r="30" vector-effect="non-scaling-stroke"/>
+        </g>
+    </symbol>
+
+
+    <!-- Divider -->
+
+    <symbol id="divider" viewBox="0 0 240 24">
+        <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+            <path d="M4 12H92" vector-effect="non-scaling-stroke"/>
+            <path d="M148 12H236" vector-effect="non-scaling-stroke"/>
+        </g>
+        <circle cx="97" cy="12" r="1.6" fill="currentColor"/>
+        <circle cx="143" cy="12" r="1.6" fill="currentColor"/>
+        <use href="#khatam" x="108" y="0" width="24" height="24"/>
+    </symbol>
+
+
+    <!-- Static arch crown (used in the venue section) -->
+
+    <symbol id="crown" viewBox="0 -58 360 228">
+        <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 170V118C6 70 70 52 180 12C290 52 354 70 354 118V170"/>
+            <path d="M16 170V120C16 78 76 60 180 24C284 60 344 78 344 120V170" stroke-opacity=".55"/>
+            <path d="M180 -17V12"/>
+        </g>
+        <use href="#crescent" x="160" y="-34" width="40" height="23.3"/>
+        <use href="#khatam" x="172" y="-56" width="16" height="16"/>
+        <use href="#khatam" x="166" y="46" width="28" height="28" opacity=".8"/>
+    </symbol>
+
+
+    <!-- Rose and leaf branch -->
+
+    <symbol id="branch" viewBox="0 0 180 260">
+
+        <g fill="none" stroke="#b8945a" stroke-width="1.1" stroke-linecap="round">
+            <path d="M4 258C30 200 40 140 78 96C104 66 138 54 168 20"/>
+            <path d="M30 206C52 190 70 192 88 178"/>
+            <path d="M52 160C34 140 30 118 38 98"/>
+        </g>
+
+        <g fill="#efe3c8" fill-opacity=".7" stroke="#b8945a" stroke-width="1">
+            <path d="M0 0C8-9 22-9 30 0C22 9 8 9 0 0Z" transform="translate(22 212) rotate(-15) scale(.8)"/>
+            <path d="M0 0C8-9 22-9 30 0C22 9 8 9 0 0Z" transform="translate(34 176) rotate(-155) scale(.8)"/>
+            <path d="M0 0C8-9 22-9 30 0C22 9 8 9 0 0Z" transform="translate(46 146) rotate(-5) scale(.8)"/>
+            <path d="M0 0C8-9 22-9 30 0C22 9 8 9 0 0Z" transform="translate(62 118) rotate(-150) scale(.8)"/>
+            <path d="M0 0C8-9 22-9 30 0C22 9 8 9 0 0Z" transform="translate(99 76) rotate(-120) scale(.75)"/>
+            <path d="M0 0C8-9 22-9 30 0C22 9 8 9 0 0Z" transform="translate(122 60) rotate(-10) scale(.75)"/>
+            <path d="M0 0C8-9 22-9 30 0C22 9 8 9 0 0Z" transform="translate(145 42) rotate(-100) scale(.7)"/>
+        </g>
+
+        <g fill="#b8945a">
+            <circle cx="14" cy="230" r="1.6"/>
+            <circle cx="70" cy="190" r="1.6"/>
+            <circle cx="52" cy="100" r="1.6"/>
+            <circle cx="128" cy="40" r="1.6"/>
+        </g>
+
+        <g fill="#f7e5e0" stroke="#c4908a" stroke-width="1" stroke-linecap="round">
+
+            <g transform="translate(78 96)">
+                <circle r="13"/>
+                <path d="M-9-3C-6-11 6-11 9-3" fill="none"/>
+                <path d="M-7 3C-4-5 5-5 7 3" fill="none"/>
+                <path d="M-4 8C-2 3 3 3 4 8" fill="none"/>
+                <circle r="2" fill="#c4908a"/>
+            </g>
+
+            <g transform="translate(88 178) scale(.7)">
+                <circle r="13"/>
+                <path d="M-9-3C-6-11 6-11 9-3" fill="none"/>
+                <path d="M-7 3C-4-5 5-5 7 3" fill="none"/>
+                <circle r="2" fill="#c4908a"/>
+            </g>
+
+            <g transform="translate(168 20) scale(.55)">
+                <circle r="13"/>
+                <path d="M-9-3C-6-11 6-11 9-3" fill="none"/>
+                <circle r="2" fill="#c4908a"/>
+            </g>
+
+            <g transform="translate(38 98) scale(.5)">
+                <circle r="13"/>
+                <path d="M-7 3C-4-5 5-5 7 3" fill="none"/>
+                <circle r="2" fill="#c4908a"/>
+            </g>
+
+        </g>
+
+    </symbol>
+
+
+    <!-- Mosque skyline -->
+
+    <symbol id="skyline" viewBox="0 0 360 80">
+        <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M0 78H360" vector-effect="non-scaling-stroke"/>
+            <path d="M134 78V58C134 38 156 30 180 14C204 30 226 38 226 58V78" vector-effect="non-scaling-stroke"/>
+            <path d="M180 14V4" vector-effect="non-scaling-stroke"/>
+            <path d="M168 78V64C168 54 192 54 192 64V78" vector-effect="non-scaling-stroke"/>
+            <path d="M90 78V66C90 52 98 48 106 44C114 48 122 52 122 66V78" vector-effect="non-scaling-stroke"/>
+            <path d="M238 78V66C238 52 246 48 254 44C262 48 270 52 270 66V78" vector-effect="non-scaling-stroke"/>
+            <path d="M60 78V34M72 78V34M56 34H76M60 34V26H72V34M60 26L66 8L72 26" vector-effect="non-scaling-stroke"/>
+            <path d="M288 78V34M300 78V34M284 34H304M288 34V26H300V34M288 26L294 8L300 26" vector-effect="non-scaling-stroke"/>
+        </g>
+    </symbol>
+
+
+    <!-- Map pin -->
+
+    <symbol id="pin" viewBox="0 0 24 32">
+        <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round">
+            <path d="M12 30C12 30 3 19 3 12A9 9 0 0 1 21 12C21 19 12 30 12 30Z"/>
+            <circle cx="12" cy="12" r="3.4"/>
+        </g>
+    </symbol>
+
+
+    <!-- Calendar icon -->
+
+    <symbol id="calendar-icon" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/>
+            <path d="M3.5 10H20.5M8 3V7M16 3V7"/>
+            <path d="M12 12.6L12.8 14.4L14.7 14.6L13.3 15.9L13.7 17.8L12 16.8L10.3 17.8L10.7 15.9L9.3 14.6L11.2 14.4Z" fill="currentColor" stroke="none"/>
+        </g>
+    </symbol>
+
+</svg>
+
+
+<!-- Scroll progress -->
+
+<div id="progress" aria-hidden="true"><i></i></div>
+
+
+
+<!-- =====================================================
      OPENING
 ===================================================== -->
 
 <div id="opening">
 
-    <div class="opening-stars"></div>
+    <div class="opening-pattern"></div>
+    <div class="opening-glow"></div>
+    <div class="dust" data-dust="14"></div>
 
-    <div class="opening-moon">
-        <span></span>
-    </div>
 
+    <!-- Hanging lanterns -->
 
     <div class="lantern lantern-left">
         <i></i>
-        <b>◇</b>
+        <svg viewBox="0 0 60 120" aria-hidden="true">
+            <circle class="fanous-halo" cx="30" cy="62" r="46" fill="url(#lampGlow)"/>
+            <ellipse class="fanous-flame" cx="30" cy="62" rx="9" ry="20" fill="url(#lampGlow)"/>
+            <use href="#fanous"/>
+        </svg>
     </div>
 
     <div class="lantern lantern-right">
         <i></i>
-        <b>◇</b>
+        <svg viewBox="0 0 60 120" aria-hidden="true">
+            <circle class="fanous-halo" cx="30" cy="62" r="46" fill="url(#lampGlow)"/>
+            <ellipse class="fanous-flame" cx="30" cy="62" rx="9" ry="20" fill="url(#lampGlow)"/>
+            <use href="#fanous"/>
+        </svg>
     </div>
 
 
+    <!-- Mihrab arch -->
+
+    <div class="opening-arch">
+
+        <svg viewBox="0 -50 360 650" aria-hidden="true">
+
+            <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <path class="draw" pathLength="1" d="M6 600V170C6 100 70 66 180 14C290 66 354 100 354 170V600Z"/>
+                <path class="draw" pathLength="1" stroke-opacity=".55" style="animation-delay:.6s" d="M18 600V172C18 108 76 78 180 30C284 78 342 108 342 172V600"/>
+                <path class="draw" pathLength="1" style="animation-delay:1.2s" d="M180 -22V14"/>
+            </g>
+
+            <use class="finial-moon" href="#crescent" x="158" y="-40" width="44" height="25.7"/>
+            <use class="finial-star" href="#khatam" x="171" y="-62" width="18" height="18"/>
+            <use class="arch-star" href="#khatam" x="164" y="58" width="32" height="32"/>
+
+        </svg>
+
+        <svg class="branch branch-left" aria-hidden="true"><use href="#branch"/></svg>
+        <svg class="branch branch-right" aria-hidden="true"><use href="#branch"/></svg>
+
+    </div>
+
+
+    <!-- Content -->
+
     <div class="opening-content">
 
-        <p class="arabic-bismillah">
+        <p class="arabic-bismillah" lang="ar" dir="rtl">
             بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
         </p>
 
-        <div class="gold-line"></div>
+        <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
 
-        <p class="arabic-opening">
+        <p class="arabic-opening" lang="ar" dir="rtl">
             بِفَضْلِ اللَّهِ وَرَحْمَتِهِ
         </p>
 
-        <h1>
-            WALIMA
-        </h1>
+        <h1>WALIMA</h1>
 
-        <span>
-            INVITATION
-        </span>
+        <span>INVITATION</span>
 
-        <button id="openInvitation">
+        <p class="opening-urdu" lang="ur" dir="rtl">دعوت نامہ</p>
+
+        <button id="openInvitation" type="button">
             OPEN INVITATION
             <b>→</b>
         </button>
@@ -82,32 +326,8 @@
     </div>
 
 
-    <!-- Royal arch -->
-
-    <div class="royal-arch">
-
-        <div class="arch-inner">
-
-            <div class="arch-glow"></div>
-
-            <div class="arch-flower flower-1">
-                ✿
-            </div>
-
-            <div class="arch-flower flower-2">
-                ✿
-            </div>
-
-            <div class="arch-leaf leaf-1"></div>
-            <div class="arch-leaf leaf-2"></div>
-
-        </div>
-
-    </div>
-
-
-    <div id="transitionMoon">
-        ☾
+    <div id="transitionMoon" aria-hidden="true">
+        <svg viewBox="0 0 48 28"><use href="#crescent"/></svg>
     </div>
 
 </div>
@@ -122,245 +342,207 @@
 
 
 <!-- =====================================================
-     PAGE 1 — PREMIUM MAIN CARD
+     PAGE 1 — MAIN CARD
 ===================================================== -->
 
-<section class="hero">
+<section class="hero reveal-group">
+
+    <div class="hero-pattern"></div>
+    <div class="hero-wash"></div>
+    <div class="dust" data-dust="16"></div>
 
 
-    <!-- Magical background -->
+    <!-- Fairy lights -->
 
-    <div class="gold-orb orb-1"></div>
-    <div class="gold-orb orb-2"></div>
-    <div class="gold-orb orb-3"></div>
+    <svg class="garland" viewBox="0 0 400 64" aria-hidden="true">
 
+        <path class="garland-wire" d="M-4 6Q50 44 100 26Q150 8 200 28Q250 48 300 26Q350 6 404 8"
+              fill="none" stroke="currentColor" stroke-width="1"/>
 
-    <!-- Stars -->
+        <g class="bulb" style="--b:0">
+            <circle cx="50" cy="30" r="10" fill="url(#lampGlow)"/>
+            <circle cx="50" cy="30" r="3" fill="#f6dc97"/>
+        </g>
+        <g class="bulb" style="--b:3">
+            <circle cx="100" cy="26" r="10" fill="url(#lampGlow)"/>
+            <circle cx="100" cy="26" r="3" fill="#f6dc97"/>
+        </g>
+        <g class="bulb" style="--b:1">
+            <circle cx="150" cy="17.5" r="10" fill="url(#lampGlow)"/>
+            <circle cx="150" cy="17.5" r="3" fill="#f6dc97"/>
+        </g>
+        <g class="bulb" style="--b:4">
+            <circle cx="200" cy="28" r="10" fill="url(#lampGlow)"/>
+            <circle cx="200" cy="28" r="3" fill="#f6dc97"/>
+        </g>
+        <g class="bulb" style="--b:2">
+            <circle cx="250" cy="37.5" r="10" fill="url(#lampGlow)"/>
+            <circle cx="250" cy="37.5" r="3" fill="#f6dc97"/>
+        </g>
+        <g class="bulb" style="--b:5">
+            <circle cx="300" cy="26" r="10" fill="url(#lampGlow)"/>
+            <circle cx="300" cy="26" r="3" fill="#f6dc97"/>
+        </g>
+        <g class="bulb" style="--b:3.5">
+            <circle cx="350" cy="11.5" r="10" fill="url(#lampGlow)"/>
+            <circle cx="350" cy="11.5" r="3" fill="#f6dc97"/>
+        </g>
 
-    <div class="magic-particles">
-
-        <span>✦</span>
-        <span>✧</span>
-        <span>✦</span>
-        <span>✧</span>
-        <span>✦</span>
-        <span>·</span>
-        <span>✧</span>
-        <span>·</span>
-
-    </div>
-
-
-    <!-- Large moon -->
-
-    <div class="hero-moon">
-        ☾
-    </div>
-
-
-    <!-- Botanical corners -->
-
-    <div class="botanical botanical-left">
-        <span>❧</span>
-        <span>❧</span>
-        <span>❧</span>
-    </div>
-
-    <div class="botanical botanical-right">
-        <span>❧</span>
-        <span>❧</span>
-        <span>❧</span>
-    </div>
+    </svg>
 
 
-    <!-- Main card -->
+    <!-- Main arch frame -->
 
-    <div class="hero-card reveal">
+    <div class="frame">
 
+        <div class="frame-crown">
 
-        <!-- top ornamental line -->
+            <svg viewBox="0 -58 360 228" aria-hidden="true">
 
-        <div class="top-ornament">
+                <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                    <path class="draw" pathLength="1" d="M6 170V118C6 70 70 52 180 12C290 52 354 70 354 118V170"/>
+                    <path class="draw d2" pathLength="1" stroke-opacity=".55" d="M16 170V120C16 78 76 60 180 24C284 60 344 78 344 120V170"/>
+                    <path class="draw d3" pathLength="1" d="M180 -17V12"/>
+                </g>
 
-            <span></span>
+                <use class="finial-moon" href="#crescent" x="160" y="-34" width="40" height="23.3"/>
+                <use class="finial-star" href="#khatam" x="172" y="-56" width="16" height="16"/>
+                <use class="arch-star" href="#khatam" x="166" y="46" width="28" height="28"/>
 
-            <b>✦</b>
-
-            <span></span>
-
-        </div>
-
-
-        <!-- Arabic -->
-
-        <div class="hero-bismillah">
-            بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
-        </div>
-
-
-        <p class="eyebrow">
-            WITH THE BLESSINGS OF ALLAH
-        </p>
-
-
-        <!-- Arabic Walima -->
-
-        <div class="walima-arabic">
-            وَلِيمَة
-        </div>
-
-
-        <p class="arabic-subtitle">
-            دعوتِ ولیمہ
-        </p>
-
-
-        <div class="gold-divider">
-
-            <span></span>
-            <i>❈</i>
-            <span></span>
+            </svg>
 
         </div>
 
 
-        <p class="invitation-copy">
+        <div class="frame-body">
 
-            With the blessings and good wishes
-            of our families, we request the pleasure
-            of your presence at the Walima celebration
+            <div class="frame-lines"></div>
 
-        </p>
+            <svg class="rosette" aria-hidden="true"><use href="#rosette"/></svg>
 
 
-        <!-- NAMES -->
+            <div class="hero-bismillah rise" lang="ar" dir="rtl">
+                بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+            </div>
 
-        <div class="couple-names">
-
-
-            <p class="urdu-label">
-                دولہا
+            <p class="eyebrow rise">
+                WITH THE BLESSINGS OF ALLAH
             </p>
 
-            <h1>
-                Mohammad Faiz
-            </h1>
+            <div class="walima-arabic rise" lang="ar" dir="rtl">
+                وَلِيمَة
+            </div>
+
+            <p class="arabic-subtitle rise" lang="ur" dir="rtl">
+                دعوتِ ولیمہ
+            </p>
+
+            <svg class="divider rise" aria-hidden="true"><use href="#divider"/></svg>
+
+            <p class="invitation-copy rise">
+                With the blessings and good wishes
+                of our families, we request the pleasure
+                of your presence at the Walima celebration
+            </p>
 
 
-            <div class="couple-symbol">
+            <div class="couple-names">
 
-                <span></span>
+                <p class="urdu-label rise" lang="ur" dir="rtl">
+                    دولہا
+                </p>
 
-                <b>&</b>
+                <h1 class="rise">
+                    Mohammad Faiz
+                </h1>
 
-                <span></span>
+                <div class="couple-symbol rise">
+                    <span></span>
+                    <b>&amp;</b>
+                    <span></span>
+                </div>
+
+                <p class="urdu-label rise" lang="ur" dir="rtl">
+                    دلہن
+                </p>
+
+                <h1 class="rise">
+                    Dilkashan Parveen
+                </h1>
 
             </div>
 
 
-            <p class="urdu-label">
-                دلہن
-            </p>
+            <div class="event-row rise">
 
-            <h1>
-                Dilkashan Parveen
-            </h1>
+                <div class="event-block">
 
+                    <strong>06</strong>
 
-        </div>
+                    <div>
+                        <span>NOVEMBER</span>
+                        <small>2026</small>
+                    </div>
 
+                </div>
 
-        <!-- Decorative ring -->
+                <div class="event-line"></div>
 
-        <div class="name-glow"></div>
+                <div class="event-block time-block">
 
+                    <small>WALIMA</small>
 
-        <!-- DATE -->
-
-        <div class="event-row">
-
-
-            <div class="event-block">
-
-                <strong>
-                    06
-                </strong>
-
-                <div>
-
-                    <span>
-                        NOVEMBER
-                    </span>
-
-                    <small>
-                        2026
-                    </small>
+                    <strong>07:00 PM</strong>
 
                 </div>
 
             </div>
 
 
-            <div class="event-line"></div>
+            <div class="urdu-invitation rise" lang="ur" dir="rtl">
 
+                <p>آپ کی تشریف آوری ہمارے لیے</p>
 
-            <div class="event-block time-block">
-
-                <small>
-                    WALIMA
-                </small>
-
-                <strong>
-                    07:00 PM
-                </strong>
+                <strong>باعثِ عزت و مسرت ہوگی</strong>
 
             </div>
 
-
         </div>
 
 
-        <!-- Urdu invitation -->
+        <div class="frame-base">
 
-        <div class="urdu-invitation">
+            <svg viewBox="0 0 360 44" aria-hidden="true">
 
-            <p>
-                آپ کی تشریف آوری ہمارے لیے
-            </p>
+                <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+                    <path class="draw" pathLength="1" d="M6 0V30H156M204 30H354V0"/>
+                    <path class="draw d2" pathLength="1" stroke-opacity=".55" d="M16 0V22H150M210 22H344V0"/>
+                </g>
 
-            <strong>
-                باعثِ عزت و مسرت ہوگی
-            </strong>
+                <use class="arch-star" href="#khatam" x="166" y="16" width="28" height="28"/>
+
+            </svg>
 
         </div>
-
-
-        <!-- bottom ornament -->
-
-        <div class="bottom-ornament">
-            ❧ ✦ ❧
-        </div>
-
 
     </div>
 
 
-    <!-- Scroll -->
+    <svg class="branch branch-left" aria-hidden="true"><use href="#branch"/></svg>
+    <svg class="branch branch-right" aria-hidden="true"><use href="#branch"/></svg>
 
-    <div class="scroll-down">
 
-        <span></span>
+    <!-- Scroll text -->
 
-        <p>
-            SCROLL DOWN
-        </p>
+    <div class="scroll-cue">
 
-        <b>
-            ↓
-        </b>
+        <p class="scroll-ur" lang="ur" dir="rtl">نیچے سکرول کریں</p>
+
+        <p class="scroll-en">SCROLL DOWN</p>
+
+        <span class="scroll-line"></span>
 
     </div>
-
 
 </section>
 
@@ -370,163 +552,130 @@
      PAGE 2 — SHAYARI + COUNTDOWN
 ===================================================== -->
 
-<section class="shayari-page">
+<section class="shayari-page reveal-group">
 
+    <div class="page-pattern"></div>
+    <div class="dust" data-dust="12"></div>
 
-    <div class="shayari-moon">
-        ☾
-    </div>
+    <div class="shayari-card">
 
-
-    <div class="shayari-stars">
-
-        <span>✦</span>
-        <span>✧</span>
-        <span>✦</span>
-        <span>·</span>
-        <span>✧</span>
-
-    </div>
-
-
-    <div class="shayari-card reveal">
-
-
-        <p class="eyebrow">
+        <p class="eyebrow-ur rise" lang="ur" dir="rtl">
             کلامِ دل
         </p>
 
-
-        <div class="shayari-title">
+        <h2 class="shayari-title rise" lang="ur" dir="rtl">
             ایک خوبصورت دعوت
+        </h2>
+
+        <svg class="divider rise" aria-hidden="true"><use href="#divider"/></svg>
+
+
+        <div class="urdu-shayari" lang="ur" dir="rtl">
+
+            <div class="sher">
+
+                <p class="misra write">
+                    نہ اب انکار کیجیے گا میری محفل میں آنے سے
+                </p>
+
+                <p class="misra write">
+                    خدا بھی روٹھ جاتا ہے کسی کا دل دکھانے سے
+                </p>
+
+                <p class="sher-meaning rise" lang="en" dir="ltr">
+                    Please don't refuse to join my gathering. Even God
+                    is displeased when a heart is hurt.
+                </p>
+
+            </div>
+
+            <svg class="divider small rise" aria-hidden="true"><use href="#divider"/></svg>
+
+            <div class="sher">
+
+                <p class="misra write">
+                    ذرا تکلیف تو ہوگی یقیناً آنے جانے میں
+                </p>
+
+                <p class="misra write">
+                    مگر عزت میری بڑھ جائے گی تشریف لانے میں
+                </p>
+
+                <p class="sher-meaning rise" lang="en" dir="ltr">
+                    The journey may take a little effort, but your
+                    presence will only add to my honour.
+                </p>
+
+            </div>
+
         </div>
 
 
-        <div class="shayari-decoration">
-            ❧ ✦ ❧
-        </div>
-
-
-        <!-- YOUR SHAYARI -->
-
-        <div class="urdu-shayari">
-
-            <p>
-                نہ اب انکار کیجیے گا میری محفل میں آنے سے
-            </p>
-
-            <p>
-                خدا بھی روٹھ جاتا ہے کسی کا دل دکھانے سے
-            </p>
-
-            <p>
-                ذرا تکلیف تو ہوگی یقیناً آنے جانے میں
-            </p>
-
-            <p>
-                مگر عزت میری بڑھ جائے گی تشریف لانے میں
-            </p>
-
-        </div>
-
-
-        <div class="shayari-decoration">
-            ❧ ✦ ❧
-        </div>
-
-
-        <p class="urdu-after-shayari">
+        <p class="urdu-after-shayari rise" lang="ur" dir="rtl">
             آپ کی تشریف آوری ہمارے لیے باعثِ خوشی ہوگی
         </p>
 
 
         <!-- COUNTDOWN -->
 
-        <div class="countdown-heading">
+        <div class="countdown-heading rise">
 
-            <p>
-                THE COUNTDOWN BEGINS
-            </p>
+            <p>THE COUNTDOWN BEGINS</p>
 
-            <h2>
-                Until Our Special Evening
-            </h2>
+            <h2>Until Our Special Evening</h2>
 
         </div>
 
 
-        <div class="countdown-grid">
-
-
-            <div class="count-box">
-
-                <strong id="days">
-                    00
-                </strong>
-
-                <span>
-                    DAYS
-                </span>
-
-            </div>
-
+        <div class="countdown-grid rise">
 
             <div class="count-box">
-
-                <strong id="hours">
-                    00
-                </strong>
-
-                <span>
-                    HOURS
-                </span>
-
+                <strong id="days">00</strong>
+                <span>DAYS</span>
             </div>
-
 
             <div class="count-box">
-
-                <strong id="minutes">
-                    00
-                </strong>
-
-                <span>
-                    MINUTES
-                </span>
-
+                <strong id="hours">00</strong>
+                <span>HOURS</span>
             </div>
-
 
             <div class="count-box">
-
-                <strong id="seconds">
-                    00
-                </strong>
-
-                <span>
-                    SECONDS
-                </span>
-
+                <strong id="minutes">00</strong>
+                <span>MINUTES</span>
             </div>
 
+            <div class="count-box">
+                <strong id="seconds">00</strong>
+                <span>SECONDS</span>
+            </div>
 
         </div>
 
 
         <button id="reminderButton"
-                class="reminder-button">
+                class="reminder-button rise"
+                type="button">
 
-            <span>＋</span>
+            <svg aria-hidden="true"><use href="#calendar-icon"/></svg>
 
             SET REMINDER
 
         </button>
 
-
-        <p class="reminder-note">
+        <p class="reminder-note rise">
             Add this special evening to your calendar
         </p>
 
+
+        <div class="scroll-cue inline">
+
+            <p class="scroll-ur" lang="ur" dir="rtl">مقام دیکھنے کے لیے نیچے جائیں</p>
+
+            <p class="scroll-en">SCROLL FOR THE VENUE</p>
+
+            <span class="scroll-line"></span>
+
+        </div>
 
     </div>
 
@@ -538,160 +687,222 @@
      PAGE 3 — VENUE
 ===================================================== -->
 
-<section class="venue-page">
+<section class="venue-page reveal-group">
+
+    <div class="page-pattern"></div>
+    <div class="dust" data-dust="12"></div>
 
 
-    <div class="venue-glow"></div>
+    <div class="lantern lantern-left small">
+        <i></i>
+        <svg viewBox="0 0 60 120" aria-hidden="true">
+            <circle class="fanous-halo" cx="30" cy="62" r="46" fill="url(#lampGlow)"/>
+            <ellipse class="fanous-flame" cx="30" cy="62" rx="9" ry="20" fill="url(#lampGlow)"/>
+            <use href="#fanous"/>
+        </svg>
+    </div>
+
+    <div class="lantern lantern-right small">
+        <i></i>
+        <svg viewBox="0 0 60 120" aria-hidden="true">
+            <circle class="fanous-halo" cx="30" cy="62" r="46" fill="url(#lampGlow)"/>
+            <ellipse class="fanous-flame" cx="30" cy="62" rx="9" ry="20" fill="url(#lampGlow)"/>
+            <use href="#fanous"/>
+        </svg>
+    </div>
 
 
-    <div class="venue-card reveal">
+    <div class="frame venue-frame">
 
-
-        <p class="eyebrow">
-            مقامِ تقریب
-        </p>
-
-
-        <div class="venue-symbol">
-            ✦
+        <div class="frame-crown">
+            <svg viewBox="0 0 360 228" aria-hidden="true"><use href="#crown"/></svg>
         </div>
 
+        <div class="frame-body">
 
-        <p class="venue-arabic">
-            تقریب کا مقام
-        </p>
-
-
-        <h2>
-            City Marriage Hall
-        </h2>
+            <div class="frame-lines"></div>
 
 
-        <div class="venue-line"></div>
-
-
-        <p class="address">
-
-            Urdu Bazar<br>
-            Darbhanga, Bihar<br>
-            846004
-
-        </p>
-
-
-        <div class="venue-buttons">
-
-
-            <a
-                href="https://www.google.com/maps/search/?api=1&query=City+Marriage+Hall+Urdu+Bazar+Darbhanga+Bihar+846004"
-                target="_blank"
-                class="primary-button"
-            >
-
-                GET DIRECTIONS
-
-                <span>↗</span>
-
-            </a>
-
-
-            <a
-                href="https://wa.me/?text=I%20will%20be%20joining%20the%20Walima%20of%20Mohammad%20Faiz%20and%20Dilkashan%20Parveen%20on%206%20November%202026%20at%207%3A00%20PM."
-                target="_blank"
-                class="secondary-button"
-            >
-
-                RSVP ON WHATSAPP
-
-            </a>
-
-
-        </div>
-
-
-        <!-- Family -->
-
-        <div class="family-section">
-
-
-            <div class="family-ornament">
-                ❧ ✦ ❧
-            </div>
-
-
-            <p class="eyebrow">
-                WITH THE BLESSINGS & GOOD WISHES OF
+            <p class="eyebrow-ur rise" lang="ur" dir="rtl">
+                مقامِ تقریب
             </p>
 
-
-            <h3>
-                Our Families
-            </h3>
-
-
-            <div class="family-list">
-
-                <span>
-                    Mohammad Badiuzzama
-                </span>
-
-                <span>
-                    Mohammad Ishteyauqe
-                </span>
-
-                <span>
-                    Mohammad Zaid
-                </span>
-
-                <span>
-                    Mohammad Kaif
-                </span>
-
-                <span>
-                    Mohammad Saif
-                </span>
-
+            <div class="pin rise" aria-hidden="true">
+                <i></i>
+                <i></i>
+                <svg viewBox="0 0 24 32"><use href="#pin"/></svg>
             </div>
 
-
-        </div>
-
-
-        <div class="final-dua">
-
-            <div>
-                ☾
-            </div>
-
-            <p>
-                آپ کی آمد ہمارے لیے باعثِ خوشی ہوگی
+            <p class="venue-arabic rise" lang="ur" dir="rtl">
+                تقریب کا مقام
             </p>
 
-            <strong>
-                Mohammad Faiz & Dilkashan Parveen
-            </strong>
+            <h2 class="rise">
+                City Marriage Hall
+            </h2>
+
+            <svg class="divider small rise" aria-hidden="true"><use href="#divider"/></svg>
+
+            <p class="address rise">
+                Urdu Bazar<br>
+                Darbhanga, Bihar<br>
+                846004
+            </p>
+
+            <div class="venue-buttons rise">
+
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=City+Marriage+Hall+Urdu+Bazar+Darbhanga+Bihar+846004"
+                   target="_blank"
+                   rel="noopener"
+                   class="primary-button">
+
+                    GET DIRECTIONS
+
+                    <span>↗</span>
+
+                </a>
+
+            </div>
+
+
+            <!-- Family -->
+
+            <div class="family-section">
+
+                <svg class="divider rise" aria-hidden="true"><use href="#divider"/></svg>
+
+                <p class="eyebrow rise">
+                    WITH THE BLESSINGS &amp; GOOD WISHES OF
+                </p>
+
+                <h3 class="rise">
+                    Our Families
+                </h3>
+
+                <div class="family-list rise">
+
+                    <span>Mohammad Badiuzzama</span>
+                    <span>Mohammad Ishteyauqe</span>
+                    <span>Mohammad Zaid</span>
+                    <span>Mohammad Kaif</span>
+                    <span>Mohammad Saif</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="final-dua rise">
+
+                <svg class="dua-moon" viewBox="0 0 48 28" aria-hidden="true"><use href="#crescent"/></svg>
+
+                <p lang="ur" dir="rtl">
+                    آپ کی آمد ہمارے لیے باعثِ خوشی ہوگی
+                </p>
+
+                <strong>
+                    Mohammad Faiz &amp; Dilkashan Parveen
+                </strong>
+
+            </div>
 
         </div>
 
+
+        <div class="frame-base">
+            <svg viewBox="0 0 360 44" aria-hidden="true">
+                <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+                    <path d="M6 0V30H156M204 30H354V0"/>
+                    <path d="M16 0V22H150M210 22H344V0" stroke-opacity=".55"/>
+                </g>
+                <use class="arch-star" href="#khatam" x="166" y="16" width="28" height="28"/>
+            </svg>
+        </div>
 
     </div>
 
+
+    <svg class="skyline rise" viewBox="0 0 360 80" aria-hidden="true"><use href="#skyline"/></svg>
 
 </section>
 
 
 <footer>
 
-    <span>✦</span>
+    <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
 
-    <p>
-        WITH LOVE & DUAS
-    </p>
+    <p class="footer-ur" lang="ur" dir="rtl">دعاؤں کے ساتھ</p>
+
+    <p>WITH LOVE &amp; DUAS</p>
 
 </footer>
 
 
 </main>
+
+
+
+<!-- =====================================================
+     ADD TO CALENDAR
+===================================================== -->
+
+<div class="sheet" id="calendarSheet" aria-hidden="true">
+
+    <div class="sheet-backdrop" data-close></div>
+
+    <div class="sheet-panel"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="sheetTitle">
+
+        <span class="sheet-grip"></span>
+
+        <p class="sheet-ur" lang="ur" dir="rtl">کیلنڈر میں شامل کریں</p>
+
+        <h2 id="sheetTitle">Add to calendar</h2>
+
+        <p class="sheet-event">
+            Walima · Fri, 6 November 2026 · 7:00 PM<br>
+            City Marriage Hall, Darbhanga
+        </p>
+
+        <a id="gcalLink"
+           class="sheet-option"
+           href="#"
+           target="_blank"
+           rel="noopener">
+
+            <svg aria-hidden="true"><use href="#calendar-icon"/></svg>
+
+            <span>
+                <strong>Google Calendar</strong>
+                <small>Android phones and the web</small>
+            </span>
+
+            <i>→</i>
+
+        </a>
+
+        <button id="icsButton" class="sheet-option" type="button">
+
+            <svg aria-hidden="true"><use href="#calendar-icon"/></svg>
+
+            <span>
+                <strong>Apple Calendar &amp; others</strong>
+                <small>iPhone, iPad, Mac, Outlook (.ics)</small>
+            </span>
+
+            <i>→</i>
+
+        </button>
+
+        <button class="sheet-cancel" type="button" data-close>
+            Not now
+        </button>
+
+    </div>
+
+</div>
 
 
 <script src="script.js"></script>
